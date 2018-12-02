@@ -1,0 +1,38 @@
+.shop .summary .species {
+    color: #444;
+    font-size: 2em;
+    letter-spacing: -1px;
+    line-height: 30px;
+	margin-top: 20px;
+}
+.edit-img {
+	position: absolute;
+	right: 30px;
+	top: 15px;
+	border: 2px solid white !important;
+}
+.fixed-bottom {
+	position: absolute;
+	bottom: 0;
+}
+.right {
+	float: right;
+}
+#filechooser {
+	display: none;
+}
+#pet-edit {
+	display: none;
+}
+#result-msg {
+	font-weight:bold;
+}
+.msg-error {
+	color: #660000;
+}
+.msg-success {
+	color: #006600;
+}
+.msg-info {
+	color: #000066;
+}
