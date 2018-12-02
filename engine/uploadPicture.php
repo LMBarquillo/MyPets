@@ -23,7 +23,7 @@ if(isset($_GET['files'])) {
 				// El nombre final lleva concatenado el Timestamp para que sea siempre único.
 				$final = $uploaddir.'600_'.$currentDateTime->getTimestamp().'_'.basename($file['name']);
 				// La redimensionamos al tamaño final que deseamos.
-				if(redimensionarImagen($f,$final,600,600,true,true)) {
+				if(redimensionarImagen($f,$final,600,600,false,true)) {
 					$files[] = substr($final, 3, strlen($final)-3); // quitamos el "../"
 					$retorno = array('files' => $files);
 				} else $retorno = array('error' => 'Imagen demasiado grande.');				

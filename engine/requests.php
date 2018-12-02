@@ -1,4 +1,11 @@
 <?php
+/**
+ * requests.php
+ * Recibe peticiones AJAX, ejecuta la orden y devuelve resultado en asíncrono.
+ * 
+ * @author Luis M. Barquillo Romero 
+ */
+
 include_once("../config.php");
 include_once("constants.php");
 include_once("dbPets.php");
@@ -33,10 +40,6 @@ function setOKPost($msg) {
     echo $msg;
 }
 
-function insertPet($post) {
-    echo "NO IMPLEMENTADO POR ESTE MÉTODO";
-}
-
 function editPet(PetsDB $dbPets, $post) {
     $pet = new Pet();
     $pet->setName($post['name']);
@@ -58,6 +61,10 @@ function editPet(PetsDB $dbPets, $post) {
     } else {
         setErrorPost(ERROR_EDITPET);
     }
+}
+
+function insertPet($post) {
+    echo "NO IMPLEMENTADO POR ESTE MÉTODO";
 }
 
 function deletePet($post) {

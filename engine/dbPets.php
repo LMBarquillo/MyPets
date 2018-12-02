@@ -84,22 +84,23 @@ class PetsDB extends Connection {
             .BIRTH_DATE.","
             .PICTURE.") VALUES (?,?,?,?,?,?,?)";
         
+        $name = $pet->getName();
+        $species = $pet->getSpecies();
+        $breed = $pet->getBreed();
+        $genre = $pet->getGenre();
+        $description = $pet->getDescription();
+        $birthDate = $pet->getBirthDate();
+        $picture = $pet->getPicture(); 
+        
         if($stmt = $this->mysqli->prepare($query)) {
-            $stmt->bind_param("sssssss",
-                $pet->getName(),
-                $pet->getSpecies(),
-                $pet->getBreed(),
-                $pet->getGenre(),
-                $pet->getDescription(),
-                $pet->getBirthDate(),
-                $pet->getPicture()
-            );
+            $stmt->bind_param("sssssss", $name, $species, $breed, $genre, $description, $birthDate, $picture);
             $stmt->execute();
             $affected = $stmt->affected_rows;
             $stmt->close();
             
             return $affected;           
         }
+        return $query;
     }
     
     function updatePet($id, Pet $pet) {

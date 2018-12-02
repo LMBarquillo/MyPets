@@ -1,4 +1,8 @@
-// Valida una fecha en forma de String dd-MM-yyyy
+/**
+ * Valida una fecha en formato dd/mm/yyyy
+ * @param dateString
+ * @returns true or false
+ */
 function isValidDate(dateString)
 {
     if(!/^\d{1,2}-\d{1,2}-\d{4}$/.test(dateString)) return false;

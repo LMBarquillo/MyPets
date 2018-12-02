@@ -14,6 +14,12 @@
 						</div>
 					</div>
 
+					<div id="toolbar" class="row">
+						<div class="col-md-12">
+							<a href="index.php?route=addpet"><button class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Añadir nueva mascota</button></a>
+						</div>
+					</div>
+
 					<div id="pet-info" class="row">
 						<ul class="products product-thumb-info-list" data-plugin-masonry>
 							<?php 

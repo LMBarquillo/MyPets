@@ -50,7 +50,7 @@
 								</a>
 							</div>
 							<div class="col-md-10">
-								<p>© Copyleft <?php echo date("Y"); ?>. Puedes hacer lo que quieras con el código.</p>
+								<p>© Copyleft <?php echo date("Y"); ?>, Luis M. Barquillo Romero - DAW2. Puedes hacer lo que quieras con el código.</p>
 							</div>
 						</div>
 					</div>
@@ -62,17 +62,23 @@
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
 		<script src="js/bootstrap/bootstrap.js"></script>
+		
 		<!-- Theme Base, Components and Settings -->
 		<script src="js/theme.js"></script>		
+		
 		<!-- Theme Initialization Files -->
 		<script src="js/theme.init.js"></script>
-		
-		<!-- Javascript personalizado -->
+				
+		<!-- Javascript general del web -->
 		<script src="js/script.js"></script>	
-		<!-- Javascript propios de sección -->
+		
+		<!-- Javascript propios de cada sección -->
 		<?php 
 		if(isset($viewPet)) {
 		    echo "<script src='js/viewpet.js'></script>";
+		}
+		if(isset($addPet)) {
+		    echo "<script src='js/addpet.js'></script>";
 		}
 		?>
 	</body>

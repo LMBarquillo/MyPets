@@ -22,7 +22,7 @@ function savePet() {
 		
 	if(name.length > 0 && species.length > 0 && breed.length > 0 && birthDate.length > 0 && description.length > 0) {
 		if(isValidDate(birthDate)) {
-			// Si todo fue bien, construimos la petición y la enviamos
+			// Si todo fue bien, construimos los parámetros para nuestra petición
 			let data = {
 				"action" : "editPet",
 				"id" : petId,
@@ -34,7 +34,7 @@ function savePet() {
 				"description" : description,
 				"picture" : petImage
 			};
-			
+			// Y disparamos nuesta la petición Ajax
 			$.ajax({
 				data: data,
 				url: 'engine/requests.php',
@@ -45,15 +45,18 @@ function savePet() {
 					cancelEdit();
 				},
 				error: function(data) {
+					// Si nos devolvío error, lo mostraremos en el mensaje de resultado
 					$("#result-msg").addClass("msg-error");
 					$("#result-msg").html(data.responseText);
 				}
 			});			
 		} else {
+			// Validación incorrecta de fecha
 			$("#result-msg").addClass("msg-error");
 			$("#result-msg").html("La fecha es inválida. Introduzca una fecha correcta");
 		}
 	} else {
+		// Validación de campos incompletos
 		$("#result-msg").addClass("msg-error");
 		$("#result-msg").html("Por favor, rellene todos los campos");
 	}
@@ -80,7 +83,7 @@ function editPet() {
 	$("#pet-edit").show('slow');
 	$("#datepicker").datepicker("setDate", birthDate);
 }
-	
+
 function uploadImage(event)	{
 	files = event.target.files;		// Obtenemos el archivo a subir del
 	event.stopPropagation();		// Detenemos el submit
