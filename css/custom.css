@@ -24,6 +24,9 @@
 #pet-edit {
 	display: none;
 }
+#viewpet-name {
+	font-weight:bold;
+}
 #result-msg {
 	font-weight:bold;
 }

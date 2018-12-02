@@ -34,7 +34,7 @@ function setOKPost($msg) {
 }
 
 function insertPet($post) {
-    echo "TEST";
+    echo "NO IMPLEMENTADO POR ESTE MÉTODO";
 }
 
 function editPet(PetsDB $dbPets, $post) {
@@ -61,6 +61,6 @@ function editPet(PetsDB $dbPets, $post) {
 }
 
 function deletePet($post) {
-    echo "TEST";
+    echo "NO IMPLEMENTADO POR ESTE MÉTODO";
 }
 ?>

@@ -19,7 +19,7 @@
 							<div class="owl-carousel">
 								<div>
 									<div class="thumbnail">
-										<img alt="" class="img-responsive img-rounded" src="img/pets/<?php echo $pet->getPicture();?>">
+										<img id="viewpet-image" alt="" class="img-responsive img-rounded" src="<?php echo $pet->getPicture();?>">
 									</div>
 								</div>
 							</div>
@@ -27,16 +27,16 @@
 
 						<div class="col-md-6">
 							<div class="summary entry-summary">
-								<h1 class="shorter"><strong><?php echo $pet->getName(); ?></strong></h1>
+								<h1 id="viewpet-name" class="shorter"><?php echo $pet->getName(); ?></h1>
 
-								<p class="species">
+								<p id="viewpet-species-breed" class="species">
 									<?php echo $pet->getSpecies();?> <?php echo $pet->getBreed();?>
 								</p>
-								<p class="birth">
+								<p id="viewpet-birth" class="birth">
 									<?php echo $pet->getGenre() == 'M' ? "Macho nacido el " : "Hembra nacida el ";?><?php echo $pet->getFormattedDate();?>
 								</p>
 
-								<p class="description"><?php echo $pet->getDescription();?></p>
+								<p id="viewpet-description" class="description"><?php echo $pet->getDescription();?></p>
 								
 								<button id="edit-pet" type="button" class="btn btn-info">Modificar mascota </button>
 								<a href="index.php"><button type="button" class="btn btn-primary">Volver al listado </button></a>
@@ -52,7 +52,7 @@
 									<div class="form-group">
 										<div class="col-md-3">
 											<div class="thumbnail">
-        										<img id="img-thumbnail" alt="" class="img-responsive img-rounded" src="img/pets/<?php echo $pet->getPicture();?>">
+        										<img id="img-thumbnail" alt="" class="img-responsive img-rounded" src="<?php echo $pet->getPicture();?>">
         									</div>
 											<div id="edit-img-btn" class="btn btn-primary edit-img">
 												<i class="fa fa-pencil"></i>

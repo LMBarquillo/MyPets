@@ -30,7 +30,7 @@
 												<span class="product-thumb-info-act-left"><em>Ver</em></span>
 												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Detalles</em></span>
 											</span>
-											<img alt="" class="img-responsive" src="img/pets/<?php echo $pet->getPicture(); ?>">
+											<img alt="" class="img-responsive" src="<?php echo $pet->getPicture(); ?>">
 										</span>
 									</a>
 									<span class="product-thumb-info-content">

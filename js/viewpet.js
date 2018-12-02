@@ -39,8 +39,10 @@ function savePet() {
 				data: data,
 				url: 'engine/requests.php',
 				type: 'post',
-				success: function(data) {
-					console.log(data);
+				success: function(response) {
+					// Si la respuesta fue correcta, actualizamos los datos en el html y cerramos la edición.
+					updateData();
+					cancelEdit();
 				},
 				error: function(data) {
 					$("#result-msg").addClass("msg-error");
@@ -57,6 +59,17 @@ function savePet() {
 	}
 }
 
+function updateData() {
+	$('#viewpet-image').attr("src", $("#img-thumbnail").attr("src"));
+	$('#viewpet-name').html($('#name').val());
+	$('#viewpet-species-breed').html($('#species').val() + ' ' + $('#breed').val());
+	$('#viewpet-birth').html(function() {
+		let genre = $('input[name=genre]:checked').val();
+		return (genre=='M' ? "Macho nacido el " : "Hembra nacida el ") + $('#datepicker').val();
+	});
+	$('#viewpet-description').html($('#description').val());
+}
+
 function cancelEdit() {
 	$("#pet-edit").hide();
 	$("#pet-view").show('slow');
@@ -69,7 +82,6 @@ function editPet() {
 }
 	
 function uploadImage(event)	{
-	console.log(event);
 	files = event.target.files;		// Obtenemos el archivo a subir del
 	event.stopPropagation();		// Detenemos el submit
 	event.preventDefault();
