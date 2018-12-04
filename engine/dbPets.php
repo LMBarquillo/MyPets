@@ -18,7 +18,7 @@ class PetsDB extends Connection {
     }
     
     function getPetList() {
-        $list = Array();
+        $list = Array();        
         $query = "SELECT * FROM ".DB_TABLE_NAME;    // TODO: CAMBIAR * POR LOS DATOS QUE QUERAMOS 
         
         if($stmt = $this->mysqli->prepare($query)) {
