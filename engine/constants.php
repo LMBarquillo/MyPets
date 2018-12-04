@@ -4,6 +4,8 @@
  * Constantes de uso general.
  */
 
+const ACTION_DELETE = "delete";
+
 const DB_TABLE_NAME = "mascotas";
 const ID = "id";
 const NAME = "nombre";

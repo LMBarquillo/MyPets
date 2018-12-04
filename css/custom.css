@@ -39,3 +39,6 @@
 .msg-info {
 	color: #000066;
 }
+.actions {
+	overflow: hidden;
+}

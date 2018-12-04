@@ -14,7 +14,7 @@
 <?php
 		if($pet->getId() >= 0) {
 ?>
-					<div id="pet-view" class="row">
+					<div id="pet-view" class="row" <?php if(isset($_GET['edit']) && $_GET['edit'] == 'true') echo 'style="display: none;"'?>>
 						<div class="col-md-6">
 							<div class="owl-carousel">
 								<div>
@@ -44,7 +44,7 @@
 						</div>
 					</div>
 					
-					<div id="pet-edit" class="row">
+					<div id="pet-edit" class="row"  <?php if(isset($_GET['edit']) && $_GET['edit'] == 'true') echo 'style="display: block;"'?>>
 						<div class="col-md-12">
 							<h2 class="short">Editar registro</h2>
 							<form id="edit-pet-form" action="index.php?route=viewpet&id=<?php echo $_GET['id']; ?>" method="post">
