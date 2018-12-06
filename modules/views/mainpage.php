@@ -10,7 +10,11 @@
         }        
     }
     
-    $list = $db->getPetList();
+    if(isset($_GET['page']) && is_numeric($_GET['page'])) {
+        $elements = $db->getPetList($_GET['page']);
+    } else {
+        $elements = $db->getPetList(1);
+    }    
 ?>
 			<div role="main" class="main shop">
 				<div class="container">
@@ -31,7 +35,8 @@
 					<div id="pet-info" class="row">
 						<ul class="products product-thumb-info-list" data-plugin-masonry>
 							<?php 
-							foreach($list as $pet) { 
+							// Obtenemos el contenido del objeto recibido, que es la lista de resultados.
+							foreach($elements->getContent() as $pet) { 
 							?>
 							<li class="col-md-3 col-sm-6 col-xs-12 product">
 								<span class="product-thumb-info">
@@ -63,6 +68,37 @@
 						</ul>
 					</div>
 					
+					<div class="row">
+						<div class="col-md-4">
+							<a href="index.php?page=<?php echo $elements->getPageNumber()-1; ?>">
+    							<button type="button" class="btn btn-primary right" <?php if($elements->getFirst()) echo "disabled"; ?>>
+    								<i class="fa fa-angle-left"></i>
+    							</button>
+    						</a>
+							<a href="index.php?page=1">
+								<button type="button" class="btn btn-primary right" <?php if($elements->getFirst()) echo "disabled"; ?>>
+									<i class="fa fa-angle-double-left"></i>
+								</button>
+							</a>
+						</div>
+						<div class="col-md-4 ">
+							<p class="page-info">Página <?php echo $elements->getPageNumber()." de ".$elements->getTotalPages(); ?></p>
+						</div>
+						<div class="col-md-4">
+							<a href="index.php?page=<?php echo $elements->getPageNumber()+1; ?>">
+    							<button type="button" class="btn btn-primary" <?php if($elements->getLast()) echo "disabled"; ?>>
+    								<i class="fa fa-angle-right"></i>
+    							</button>
+							</a>
+							<a href="index.php?page=<?php echo $elements->getTotalPages(); ?>">
+    							<button type="button" class="btn btn-primary" <?php if($elements->getLast()) echo "disabled"; ?>>
+    								<i class="fa fa-angle-double-right"></i>
+    							</button>
+							</a>
+						</div>
+					</div>
+					
+					
 					<!-- Modal -->
                     <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
@@ -84,17 +120,5 @@
                         </div>
                       </div>
                     </div>
-
-					<div class="row">
-						<div class="col-md-12">
-							<ul class="pagination pull-right">
-								<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-							</ul>
-						</div>
-					</div>
 				</div>
 			</div>			

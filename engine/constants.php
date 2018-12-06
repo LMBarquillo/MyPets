@@ -3,6 +3,7 @@
 /**
  * Constantes de uso general.
  */
+const RESULTS_PER_PAGE = 4;
 
 const ACTION_DELETE = "delete";
 
