@@ -39,7 +39,7 @@
 								<p id="viewpet-description" class="description"><?php echo $pet->getDescription();?></p>
 								
 								<button id="edit-pet" type="button" class="btn btn-info">Modificar mascota </button>
-								<a href="index.php"><button type="button" class="btn btn-primary">Volver al listado </button></a>
+								<a href="index.php"><button id="go-back" type="button" class="btn btn-danger right"><i class="fa fa-chevron-left"></i> Volver al listado</button></a>
 							</div>
 						</div>
 					</div>
@@ -94,7 +94,11 @@
 								<div class="row">
 									<div class="col-md-12">
 										<button id="save-edit" type="button" class="btn btn-success right"><i class="fa fa-check"></i> Guardar</button>
+										<?php if(isset($_GET['edit']) && $_GET['edit'] == 'true') { ?>
+										<a href="index.php"><button id="go-back" type="button" class="btn btn-danger"><i class="fa fa-chevron-left"></i> Volver al listado</button></a>
+										<?php } else { ?>
 										<button id="cancel-edit" type="button" class="btn btn-danger"><i class="fa fa-times"></i> Cancelar</button>
+										<?php } ?>
 									</div>
 								</div>
 							</form>
