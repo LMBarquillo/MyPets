@@ -46,7 +46,7 @@ class PetsDB extends Connection {
         } else {
             $count = -1;
         }
-        
+
         if($stmt = $this->mysqli->prepare($query)) {
             $stmt->bind_param("s", $paramPage);
             $stmt->execute();
@@ -67,7 +67,7 @@ class PetsDB extends Connection {
                 
                 $list[] = $m; 
             }            
-        }
+        } 
         
         // Calculo el total de páginas
         $totalPages = ceil($count / RESULTS_PER_PAGE);
@@ -78,6 +78,8 @@ class PetsDB extends Connection {
         $elements->setTotalElements($count);
         $elements->setPageNumber($page);
         $elements->setTotalPages($totalPages);
+        $elements->setFirstElement($paramPage + 1);
+        $elements->setLastElement($paramPage + count($list));
         $elements->setFirst($page == 1 ? true : false);
         $elements->setLast($page == $totalPages ? true : false);
         

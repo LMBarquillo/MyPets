@@ -9,6 +9,8 @@ class Page {
     private $pageNumber;
     private $totalPages;
     private $totalElements;
+    private $firstElement;
+    private $lastElement;
     private $first;
     private $last;
     
@@ -42,6 +44,22 @@ class Page {
     public function getTotalElements()
     {
         return $this->totalElements;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getFirstElement()
+    {
+        return $this->firstElement;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getLastElement()
+    {
+        return $this->lastElement;
     }
 
     /**
@@ -90,6 +108,22 @@ class Page {
     public function setTotalElements($totalElements)
     {
         $this->totalElements = $totalElements;
+    }
+    
+    /**
+     * @param mixed $firstElement
+     */
+    public function setFirstElement($firstElement)
+    {
+        $this->firstElement = $firstElement;
+    }
+    
+    /**
+     * @param mixed $lastElement
+     */
+    public function setLastElement($lastElement)
+    {
+        $this->lastElement = $lastElement;
     }
 
     /**

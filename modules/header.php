@@ -40,10 +40,11 @@
 					<div class="search">
 						<form id="searchForm" action="page-search-results.html" method="get">
 							<div class="input-group">
-								<input type="text" class="form-control search" name="q" id="q" placeholder="Buscar..." required>
+								<!-- Si tengo un ratito, ya lo implementaré -->
+								<!-- <input type="text" class="form-control search" name="q" id="q" placeholder="Buscar..." required>
 								<span class="input-group-btn">
 									<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-								</span>
+								</span> -->
 							</div>
 						</form>
 					</div>

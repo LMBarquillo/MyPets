@@ -22,7 +22,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<h1 class="shorter"><strong>Listado</strong></h1>
-							<p>Mostrando 1-12 de 25 resultados.</p>
+							<p>Mostrando <?php echo $elements->getFirstElement(); ?> al <?php echo $elements->getLastElement(); ?> de <?php echo $elements->getTotalElements(); ?> resultados.</p>
 						</div>
 					</div>
 
@@ -39,17 +39,17 @@
 							foreach($elements->getContent() as $pet) { 
 							?>
 							<li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
+								<div class="product-thumb-info">
 									<a href="index.php?route=viewpet&id=<?php echo $pet->getId(); ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
+										<div class="product-thumb-info-image">
+											<div class="product-thumb-info-act">
 												<span class="product-thumb-info-act-left"><em>Ver</em></span>
 												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Detalles</em></span>
-											</span>
+											</div>
 											<img alt="" class="img-responsive" src="<?php echo $pet->getPicture(); ?>">
-										</span>
+										</div>
 									</a>
-									<span class="product-thumb-info-content">
+									<div class="product-thumb-info-content">
 										<a href="index.php?route=viewpet&id=<?php echo $pet->getId(); ?>">
 											<h4><?php echo $pet->getName(); ?></h4>
 											<span class="price">
@@ -61,8 +61,8 @@
 											<button class="btn btn-primary right" onclick="window.location.replace('index.php?route=viewpet&id=<?php echo $pet->getId(); ?>&edit=true');"><i class="fa fa-pencil"></i></button>
 											<button class="btn btn-success right" onclick="window.location.replace('index.php?route=viewpet&id=<?php echo $pet->getId(); ?>');"><i class="fa fa-eye"></i></button>
 										</div>
-									</span>
-								</span>
+									</div>
+								</div>
 							</li>
 							<?php }	?>
 						</ul>
