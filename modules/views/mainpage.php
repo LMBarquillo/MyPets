@@ -3,7 +3,6 @@
     $db = new PetsDB($host, $database, $user, $password);
     $list = $db->getPetList();
 ?>
-
 			<div role="main" class="main shop">
 				<div class="container">
 					<hr class="tall">
@@ -16,7 +15,11 @@
 
 					<div id="toolbar" class="row">
 						<div class="col-md-12">
-							<a href="index.php?route=addpet"><button class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Añadir nueva mascota</button></a>
+							<a href="index.php?route=addpet">
+								<button class="btn btn-primary pull-right">
+									<i class="fa fa-plus"></i> Añadir nueva mascota
+								</button>
+							</a>
 						</div>
 					</div>
 
@@ -65,6 +68,4 @@
 						</div>
 					</div>
 				</div>
-			</div>
-
-			
+			</div>			
