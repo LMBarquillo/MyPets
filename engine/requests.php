@@ -23,6 +23,9 @@ if(isset($_POST['action'])) {
         case 'deletePet':
             deletePet($_POST);
             break;
+        case 'login':
+            login($dbPets, $_POST);
+            break;
         default:
             setErrorPost(ERROR_BADACTION);
     }
@@ -60,6 +63,14 @@ function editPet(PetsDB $dbPets, $post) {
         setOKPost(SUCCESS_EDITPET);
     } else {
         setErrorPost(ERROR_EDITPET);
+    }
+}
+
+function login(PetsDB $dbPets, $post) {
+    if(isset($post['user']) && isset($post['pass'])) {
+        
+    } else {
+        setErrorPost(ERROR_BADLOGIN);
     }
 }
 

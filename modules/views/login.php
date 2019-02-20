@@ -1,4 +1,8 @@
-            <div role="main" class="main shop">
+<?php
+	$loginPage = true;
+?>            
+			
+			<div role="main" class="main shop">
 				<div class="container">
 					<hr class="tall">
 
@@ -15,7 +19,7 @@
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>Usuario</label>
-															<input type="text" value="" class="form-control input-lg">
+															<input id="input-user" type="text" value="" class="form-control input-lg">
 														</div>
 													</div>
 												</div>
@@ -23,15 +27,16 @@
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>Contraseña</label>
-															<input type="password" value="" class="form-control input-lg">
+															<input id="input-pass" type="password" value="" class="form-control input-lg">
 														</div>
 													</div>
 												</div>
 												<div class="row">
 													<div class="col-md-6">
+														<p id="login-msg" class="msg-error"></p>
 													</div>
 													<div class="col-md-6">
-														<input type="submit" value="Entrar" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+														<input id="login-btn" type="button" value="Entrar" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
 													</div>
 												</div>
 											</form>

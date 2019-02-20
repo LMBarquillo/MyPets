@@ -4,6 +4,7 @@ require_once('constants.php');
 require_once('connection.php');
 require_once('models/pet.model.php');
 require_once('models/page.model.php');
+require_once('models/user.model.php');
 
 /**
  * Clase PetsDB. Métodos de acceso a la BD para objetos Pet.
@@ -17,6 +18,29 @@ class PetsDB extends Connection {
         $connection = new Connection($host, $database, $user, $pass);
         $this->mysqli = $connection->getConnection();
     }
+
+    function login($user, $pass) {
+        $userLogged = new User();
+
+        $query = "SELECT * FROM ".DB_TABLE_USERS." WHERE user = ? AND pass = PASSWORD(?)";
+
+        if($stmt = $this->mysqli->prepare($query)) {
+            $stmt->bind_param("ss", $user, $pass);
+            $stmt->execute();
+            $stmt->store_result();
+            $data = Helpers::fetcharray($stmt);
+            $stmt->free_result();
+            $stmt->close();
+
+            if(count($data) > 0) {
+                
+            } else {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
+    }
     
     /**
      * Obtiene un objeto de página con sus correspndientes resultados
@@ -29,9 +53,9 @@ class PetsDB extends Connection {
         $list = Array();
         
         // Para crear una página de resultados necesito el número de registros
-        $queryCount = "SELECT COUNT(*) AS num FROM ".DB_TABLE_NAME;
+        $queryCount = "SELECT COUNT(*) AS num FROM ".DB_TABLE_PETS;
         // Y los resultados, evidentemente
-        $query = "SELECT * FROM ".DB_TABLE_NAME." LIMIT ?,".RESULTS_PER_PAGE;
+        $query = "SELECT * FROM ".DB_TABLE_PETS." LIMIT ?,".RESULTS_PER_PAGE;
         
         $this->mysqli->begin_transaction();
 
@@ -97,7 +121,7 @@ class PetsDB extends Connection {
     function getPetById($id) {
         $pet = new Pet();
         
-        $query = "SELECT * FROM ".DB_TABLE_NAME." WHERE id=?";
+        $query = "SELECT * FROM ".DB_TABLE_PETS." WHERE id=?";
         if($stmt = $this->mysqli->prepare($query)) {
             $stmt->bind_param("d", $id);     
             $stmt->execute();
@@ -130,7 +154,7 @@ class PetsDB extends Connection {
      * @return null o el número de filas afectadas
      */
     function insertPet(Pet $pet) {
-        $query = "INSERT INTO ".DB_TABLE_NAME." (".NAME.","
+        $query = "INSERT INTO ".DB_TABLE_PETS." (".NAME.","
             .SPECIES.","
             .BREED.","
             .GENRE.","
@@ -164,7 +188,7 @@ class PetsDB extends Connection {
      * @return null o el número de filas afectadas
      */
     function updatePet($id, Pet $pet) {
-        $query = "UPDATE ".DB_TABLE_NAME." SET ".NAME."=?,"
+        $query = "UPDATE ".DB_TABLE_PETS." SET ".NAME."=?,"
             .SPECIES."=?,"
             .BREED."=?,"
             .GENRE."=?,"
@@ -198,7 +222,7 @@ class PetsDB extends Connection {
      * @return null o el número de filas afectadas
      */
     function deletePet($id) {
-        $query = "DELETE FROM ".DB_TABLE_NAME." WHERE ".ID."=?";
+        $query = "DELETE FROM ".DB_TABLE_PETS." WHERE ".ID."=?";
         
         if($stmt = $this->mysqli->prepare($query)) {
             $stmt->bind_param("d",$id);
