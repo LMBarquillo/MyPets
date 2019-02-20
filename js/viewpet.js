@@ -1,5 +1,6 @@
 $(function() { 
-	$("#datepicker").datepicker({dateFormat: 'dd-mm-yy' });
+	$("#datepicker").datepicker({dateFormat: 'dd-mm-yy'});
+	$("#datepicker").datepicker("setDate", birthDate);
 	$("#edit-img-btn").click(openFileChooser);
 	$('#filechooser').on('change', uploadImage);
 	$("#save-edit").click(savePet);

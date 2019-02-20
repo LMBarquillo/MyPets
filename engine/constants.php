@@ -3,6 +3,9 @@
 /**
  * Constantes de uso general.
  */
+const RESULTS_PER_PAGE = 4;
+
+const ACTION_DELETE = "delete";
 
 const DB_TABLE_NAME = "mascotas";
 const ID = "id";

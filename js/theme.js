@@ -2417,11 +2417,11 @@ window.theme = {};
 				if (this.options.menuAfterHeader) {
 					$headerContainer.css('min-height', $header.height());
 				}
-
+				
 				$(window).afterResize(function() {
 					$headerContainer.css('min-height', $header.height());
 				});
-
+				
 				self.checkStickyMenu = function() {
 
 					if ((!self.options.stickyEnableOnBoxed && $body.hasClass('boxed')) || ($(window).width() < 991 && !self.options.stickyEnableOnMobile)) {

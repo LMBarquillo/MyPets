@@ -14,7 +14,7 @@
 <?php
 		if($pet->getId() >= 0) {
 ?>
-					<div id="pet-view" class="row">
+					<div id="pet-view" class="row" <?php if(isset($_GET['edit']) && $_GET['edit'] == 'true') echo 'style="display: none;"'?>>
 						<div class="col-md-6">
 							<div class="owl-carousel">
 								<div>
@@ -39,12 +39,12 @@
 								<p id="viewpet-description" class="description"><?php echo $pet->getDescription();?></p>
 								
 								<button id="edit-pet" type="button" class="btn btn-info">Modificar mascota </button>
-								<a href="index.php"><button type="button" class="btn btn-primary">Volver al listado </button></a>
+								<a href="index.php"><button id="go-back" type="button" class="btn btn-danger right"><i class="fa fa-chevron-left"></i> Volver al listado</button></a>
 							</div>
 						</div>
 					</div>
 					
-					<div id="pet-edit" class="row">
+					<div id="pet-edit" class="row"  <?php if(isset($_GET['edit']) && $_GET['edit'] == 'true') echo 'style="display: block;"'?>>
 						<div class="col-md-12">
 							<h2 class="short">Editar registro</h2>
 							<form id="edit-pet-form" action="index.php?route=viewpet&id=<?php echo $_GET['id']; ?>" method="post">
@@ -94,7 +94,11 @@
 								<div class="row">
 									<div class="col-md-12">
 										<button id="save-edit" type="button" class="btn btn-success right"><i class="fa fa-check"></i> Guardar</button>
+										<?php if(isset($_GET['edit']) && $_GET['edit'] == 'true') { ?>
+										<a href="index.php"><button id="go-back" type="button" class="btn btn-danger"><i class="fa fa-chevron-left"></i> Volver al listado</button></a>
+										<?php } else { ?>
 										<button id="cancel-edit" type="button" class="btn btn-danger"><i class="fa fa-times"></i> Cancelar</button>
+										<?php } ?>
 									</div>
 								</div>
 							</form>

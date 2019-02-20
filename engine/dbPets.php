@@ -3,6 +3,7 @@ require_once('helpers.php');
 require_once('constants.php');
 require_once('connection.php');
 require_once('models/pet.model.php');
+require_once('models/page.model.php');
 
 /**
  * Clase PetsDB. Métodos de acceso a la BD para objetos Pet.
@@ -17,11 +18,37 @@ class PetsDB extends Connection {
         $this->mysqli = $connection->getConnection();
     }
     
-    function getPetList() {
+    /**
+     * Obtiene un objeto de página con sus correspndientes resultados
+     * @param number: El número de página deseado, siendo 0 la primera.
+     * @return Page: El objeto con los resultados e información de la página 
+     */
+    function getPetList($page = 1) {
+        $count = 0;
+        $paramPage = ($page-1) * RESULTS_PER_PAGE;
         $list = Array();
-        $query = "SELECT * FROM ".DB_TABLE_NAME;    // TODO: CAMBIAR * POR LOS DATOS QUE QUERAMOS 
         
+        // Para crear una página de resultados necesito el número de registros
+        $queryCount = "SELECT COUNT(*) AS num FROM ".DB_TABLE_NAME;
+        // Y los resultados, evidentemente
+        $query = "SELECT * FROM ".DB_TABLE_NAME." LIMIT ?,".RESULTS_PER_PAGE;
+        
+        $this->mysqli->begin_transaction();
+
+        // Lanzo las 2 consultas dentro de una transacción, de ese modo, nos aseguramos que 
+        // el número de registros se corresponde con los que obtendré en la consulta posterior
+        if($stmt = $this->mysqli->prepare($queryCount)) {
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($count);
+            $data = $stmt->fetch();
+            $stmt->close();
+        } else {
+            $count = -1;
+        }
+
         if($stmt = $this->mysqli->prepare($query)) {
+            $stmt->bind_param("s", $paramPage);
             $stmt->execute();
             $stmt->store_result();
             $data = Helpers::fetcharray($stmt);            
@@ -40,11 +67,33 @@ class PetsDB extends Connection {
                 
                 $list[] = $m; 
             }            
-        }
+        } 
         
-        return $list;
+        // Calculo el total de páginas
+        $totalPages = ceil($count / RESULTS_PER_PAGE);
+
+        // El objeto Page contiene, tanto los resultados, como la información de la paginación
+        $elements = new Page();
+        $elements->setContent($list);
+        $elements->setTotalElements($count);
+        $elements->setPageNumber($page);
+        $elements->setTotalPages($totalPages);
+        $elements->setFirstElement($paramPage + 1);
+        $elements->setLastElement($paramPage + count($list));
+        $elements->setFirst($page == 1 ? true : false);
+        $elements->setLast($page == $totalPages ? true : false);
+        
+        // Y disparamos el commit
+        $this->mysqli->commit();
+        
+        return $elements;   // Devolvemos toda la información junta.
     }
     
+    /**
+     * Obtiene un registro específico a partir de su id
+     * @param El id del registro a obtener
+     * @return Pet : objeto con el resultado
+     */
     function getPetById($id) {
         $pet = new Pet();
         
@@ -75,6 +124,11 @@ class PetsDB extends Connection {
         return $pet;
     }
     
+    /**
+     * Inserta un registro a partir de un objeto
+     * @param Pet Objeto a insertar
+     * @return null o el número de filas afectadas
+     */
     function insertPet(Pet $pet) {
         $query = "INSERT INTO ".DB_TABLE_NAME." (".NAME.","
             .SPECIES.","
@@ -100,9 +154,15 @@ class PetsDB extends Connection {
             
             return $affected;           
         }
-        return $query;
+        return null;
     }
     
+    /**
+     * Actualiza un registro a partir de su objeto y su id
+     * @param int id a actualizar
+     * @param Pet Ojbeto a actualizar
+     * @return null o el número de filas afectadas
+     */
     function updatePet($id, Pet $pet) {
         $query = "UPDATE ".DB_TABLE_NAME." SET ".NAME."=?,"
             .SPECIES."=?,"
@@ -132,6 +192,11 @@ class PetsDB extends Connection {
         return null;
     }
     
+    /**
+     * Elimina un registro a partir de su id
+     * @param int id a eliminar
+     * @return null o el número de filas afectadas
+     */
     function deletePet($id) {
         $query = "DELETE FROM ".DB_TABLE_NAME." WHERE ".ID."=?";
         

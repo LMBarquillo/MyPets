@@ -73,7 +73,10 @@
 		<script src="js/script.js"></script>	
 		
 		<!-- Javascript propios de cada sección -->
-		<?php 
+		<?php
+		if(isset($mainPage)) {
+		    echo "<script src='js/mainpage.js'></script>";
+		}
 		if(isset($viewPet)) {
 		    echo "<script src='js/viewpet.js'></script>";
 		}
