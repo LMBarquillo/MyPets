@@ -55,3 +55,18 @@ a {
 	padding-top: 6px;
 	color: #333;
 }
+#header .user-info {
+    float: right;
+    margin: 10px 0 0 15px;
+    position: relative;
+}
+#header .user-info button.btn-default {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+}
+.input-group-btn > span {
+	font-size: 14px;
+	float: left;
+}
