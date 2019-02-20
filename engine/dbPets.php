@@ -19,7 +19,13 @@ class PetsDB extends Connection {
         $this->mysqli = $connection->getConnection();
     }
 
-    function login($user, $pass) {
+    /**
+     * Obtiene un objeto User a partir de su usuario y contraseña, si existe.
+     * @param string $user
+     * @param string $pass
+     * @return User
+     */
+    function login(string $user, string $pass) {
         $userLogged = new User();
 
         $query = "SELECT * FROM ".DB_TABLE_USERS." WHERE user = ? AND pass = PASSWORD(?)";
@@ -33,13 +39,13 @@ class PetsDB extends Connection {
             $stmt->close();
 
             if(count($data) > 0) {
-                
-            } else {
-                return 0;
+                $userLogged->setUser($data[0][USER]);
+                $userLogged->setPass($data[0][PASS]);   // Guardamos la pass encriptada
+                $userLogged->setRole($data[0][ROLE]);
             }
-        } else {
-            return 0;
-        }
+        } 
+        
+        return $userLogged;
     }
     
     /**

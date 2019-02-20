@@ -39,6 +39,12 @@ function setErrorPost($msg) {
     die($msg);
 }
 
+function setUnauthorized($msg) {
+    header("HTTP/1.1 401 Unauthorized");
+    header('Content-Type: application/json; charset=UTF-8');
+    die($msg);
+}
+
 function setOKPost($msg) {
     echo $msg;
 }
@@ -68,7 +74,19 @@ function editPet(PetsDB $dbPets, $post) {
 
 function login(PetsDB $dbPets, $post) {
     if(isset($post['user']) && isset($post['pass'])) {
+        $user = $dbPets->login($post['user'], $post['pass']);
         
+        if(!empty($user->getUser())) {
+            // Iniciamos sesión
+            session_start();
+            $_SESSION['user'] = $user->getUser();
+            $_SESSION['token'] = $user->getPass();
+            $_SESSION['role'] = $user->getRole();
+            
+            setOKPost(SUCCESS_LOGIN);
+        } else {
+            setUnauthorized(ERROR_LOGIN);   
+        }        
     } else {
         setErrorPost(ERROR_BADLOGIN);
     }

@@ -5,32 +5,56 @@ class User {
     private $pass;
     private $role;
 
-    function __construct() {
-	    
-    }  
-    
-    function setUser($user) {
-        $this->user = $user;
-    }
-
-    function getUser() {
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
         return $this->user;
     }
 
-    function setPass($pass) {
-        $this->pass = $pass;
-    }
-
-    function getPass() {
+    /**
+     * @return mixed
+     */
+    public function getPass()
+    {
         return $this->pass;
     }
 
-    function setRole($role) {
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @param mixed $pass
+     */
+    public function setPass($pass)
+    {
+        $this->pass = $pass;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role)
+    {
         $this->role = $role;
     }
 
-    function getRole() {
-        return $this->role;
-    }
+    function __construct() {
+	    
+    }      
 
 }

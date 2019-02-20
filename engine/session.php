@@ -1,5 +1,5 @@
 <?php
-class session {
+class Session {
 	public $data = array();
 			
   	public function __construct() {		
