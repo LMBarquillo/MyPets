@@ -8,6 +8,7 @@
 
 include_once("../config.php");
 include_once("constants.php");
+include_once("session.php");
 include_once("dbPets.php");
 
 if(isset($_POST['action'])) {
@@ -25,6 +26,9 @@ if(isset($_POST['action'])) {
             break;
         case 'login':
             login($dbPets, $_POST);
+            break;
+        case 'logout':
+            logout();
             break;
         default:
             setErrorPost(ERROR_BADACTION);
@@ -90,6 +94,11 @@ function login(PetsDB $dbPets, $post) {
     } else {
         setErrorPost(ERROR_BADLOGIN);
     }
+}
+
+function logout() {
+    Session::destroy();
+    setOKPost(SUCCESS_LOGOUT);
 }
 
 function insertPet($post) {

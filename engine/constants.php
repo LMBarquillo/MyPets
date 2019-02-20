@@ -26,6 +26,7 @@ const ROLE = "role";
 
 const SUCCESS_EDITPET = "Éxito. Se modificó correctamente el registro.";
 const SUCCESS_LOGIN = "Identificación correcta";
+const SUCCESS_LOGOUT = "Desconexión correcta";
 
 const ERROR_NOPOST = "Error. No se recibieron los datos correctos.";
 const ERROR_BADACTION = "Error. Los datos recibidos son incorrectos.";

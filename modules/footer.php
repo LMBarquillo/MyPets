@@ -83,9 +83,6 @@
 		if(isset($addPet)) {
 		    echo "<script src='js/addpet.js'></script>";
 		}
-		if(isset($loginPage)) {
-			echo "<script src='js/login.js'></script>";
-		}
 		?>
 	</body>
 </html>

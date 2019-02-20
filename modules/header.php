@@ -42,10 +42,10 @@
 						<div class="input-group">
 							<span class="input-group-btn">
 							<?php
-								if(isset($_SESSION['user']) && isset($_SESSION['pass'])) {
+								if(isset($_SESSION['user']) && isset($_SESSION['token'])) {
 							?>
-								<button class="btn btn-danger" type="button"><i class="fa fa-close"></i>&nbsp;Desconectarse</button>
-								<span>Bienvenido, <?php echo $_SESSION['user']; ?></span>
+								<button id="logout-btn" class="btn btn-danger" type="button"><i class="fa fa-close"></i>&nbsp;Desconectarse</button>
+								<span>Bienvenido, <strong><?php echo $_SESSION['user']; ?></strong></span>
 							<?php 
 								} else { 
 							?>

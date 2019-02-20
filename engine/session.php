@@ -17,7 +17,7 @@ class Session {
 		return session_id();
 	}
 
-	function destroy() {
+	static function destroy() {
 		// Destruir todas las variables de sesión.
 		$_SESSION = array();
 
