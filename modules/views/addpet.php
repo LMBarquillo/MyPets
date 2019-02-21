@@ -14,7 +14,8 @@
                 break;
         }
     }
-        
+     
+    if(isset($_SESSION[ROLE]) && $_SESSION[ROLE] == ADMIN_ROLE) {
 ?>
 			<div role="main" class="main shop">
 				<div class="container">
@@ -74,3 +75,22 @@
 					
 				</div>
 			</div>
+			
+<?php
+    } else {
+?>
+			<div role="main" class="main shop">
+				<div class="container">
+					<hr class="tall">
+			
+					<div id="pet-add" class="row">
+						<div class="col-md-12">
+							sin permisos
+						</div>
+					</div>
+				</div>
+			</div>
+	
+<?php 
+    }
+?>

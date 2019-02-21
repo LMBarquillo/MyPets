@@ -38,7 +38,13 @@
 
 								<p id="viewpet-description" class="description"><?php echo $pet->getDescription();?></p>
 								
+								<?php
+							         if(isset($_SESSION[ROLE]) && $_SESSION[ROLE] == ADMIN_ROLE) {
+							    ?>
 								<button id="edit-pet" type="button" class="btn btn-info">Modificar mascota </button>
+								<?php 
+							         }
+							    ?>
 								<a href="index.php"><button id="go-back" type="button" class="btn btn-danger right"><i class="fa fa-chevron-left"></i> Volver al listado</button></a>
 							</div>
 						</div>

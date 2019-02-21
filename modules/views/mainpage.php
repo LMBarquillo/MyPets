@@ -28,11 +28,17 @@
 
 					<div id="toolbar" class="row">
 						<div class="col-md-12">
+							<?php
+							if(isset($_SESSION[ROLE]) && $_SESSION[ROLE] == ADMIN_ROLE) {
+							?>
 							<a href="index.php?route=addpet">
 								<button class="btn btn-primary pull-right">
 									<i class="fa fa-plus"></i> Añadir nueva mascota
 								</button>
 							</a>
+							<?php
+							}
+							?>
 						</div>
 					</div>
 
@@ -61,8 +67,14 @@
 											</span>
 										</a>
 										<div class="actions">
+										<?php
+							                 if(isset($_SESSION[ROLE]) && $_SESSION[ROLE] == ADMIN_ROLE) {
+							             ?>
 											<button class="btn btn-danger right" data-toggle="modal" data-target="#confirmDelete" data-delete="<?php echo $pet->getId(); ?>"><i class="fa fa-times"></i></button>
 											<button class="btn btn-primary right" onclick="window.location.replace('index.php?route=viewpet&id=<?php echo $pet->getId(); ?>&edit=true');"><i class="fa fa-pencil"></i></button>
+										<?php 
+							                 }
+							            ?>
 											<button class="btn btn-success right" onclick="window.location.replace('index.php?route=viewpet&id=<?php echo $pet->getId(); ?>');"><i class="fa fa-eye"></i></button>
 										</div>
 									</div>

@@ -82,22 +82,4 @@
 						<i class="fa fa-bars"></i>
 					</button>
 				</div>
-				<div class="navbar-collapse nav-main-collapse collapse">
-					<div class="container">
-						<nav class="nav-main mega-menu">
-							<ul class="nav nav-pills nav-main" id="mainMenu">
-								<li class="dropdown">
-									<a class="dropdown-toggle" href="index.php">
-										Inicio
-									</a>
-								</li>
-								<li class="dropdown">
-									<a class="dropdown-toggle" href="#">
-										Contacto
-									</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
 			</header>

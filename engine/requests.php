@@ -58,19 +58,19 @@ function setOKPost($msg) {
 
 function editPet(PetsDB $dbPets, $post) {
     $pet = new Pet();
-    $pet->setName($post['name']);
-    $pet->setSpecies($post['species']);
-    $pet->setBreed($post['breed']);
-    $pet->setGenre($post['genre']);
-    $pet->setDescription($post['description']);
-    $pet->setPicture($post['picture']);
+    $pet->setName($post[NAME]);
+    $pet->setSpecies($post[SPECIES]);
+    $pet->setBreed($post[BREED]);
+    $pet->setGenre($post[GENRE]);
+    $pet->setDescription($post[DESCRIPTION]);
+    $pet->setPicture($post[PICTURE]);
     // Convertimos la fecha de dd/mm/yyyy a yyyy-mm-dd    
-    $spDate = DateTime::createFromFormat('d-m-Y', $post['birthdate']);
+    $spDate = DateTime::createFromFormat('d-m-Y', $post[BIRTHDATE]);
     $mysqlDate = $spDate->format('Y-m-d');
     
     $pet->setBirthDate($mysqlDate);
     
-    $result = $dbPets->updatePet($post['id'], $pet);
+    $result = $dbPets->updatePet($post[ID], $pet);
     
     if($result != null) {
         setOKPost(SUCCESS_EDITPET);
@@ -80,15 +80,15 @@ function editPet(PetsDB $dbPets, $post) {
 }
 
 function login(PetsDB $dbPets, $post) {
-    if(isset($post['user']) && isset($post['pass'])) {
-        $user = $dbPets->login($post['user'], $post['pass']);
+    if(isset($post[USER]) && isset($post[PASS])) {
+        $user = $dbPets->login($post[USER], $post[PASS]);
         
         if(!empty($user->getUser())) {
             // Iniciamos sesión
             session_start();
-            $_SESSION['user'] = $user->getUser();
-            $_SESSION['token'] = $user->getPass();
-            $_SESSION['role'] = $user->getRole();
+            $_SESSION[USER] = $user->getUser();
+            $_SESSION[TOKEN] = $user->getPass();
+            $_SESSION[ROLE] = $user->getRole();
             
             setOKPost(SUCCESS_LOGIN);
         } else {

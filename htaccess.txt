@@ -1,0 +1,16 @@
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+# Activar RewriteEngine
+RewriteEngine on
+
+RewriteBase / 
+ 
+# Reescribir la URL solicitada por el usuario
+#   Entrada:  NOMBRE/
+#   Salida: index.php?route=NOMBRE
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^([a-zA-Z0-9ñÑ\-]+)/?$ index.php?route=$1
+
+</IfModule>

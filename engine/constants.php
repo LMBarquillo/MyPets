@@ -22,7 +22,11 @@ const PICTURE = "foto";
 const DB_TABLE_USERS = "usuarios";
 const USER = "user";
 const PASS = "pass";
+const TOKEN = "token";
 const ROLE = "role";
+
+const ADMIN_ROLE = "ADMIN";
+const USER_ROLE = "USER";
 
 const SUCCESS_EDITPET = "Éxito. Se modificó correctamente el registro.";
 const SUCCESS_LOGIN = "Identificación correcta";
