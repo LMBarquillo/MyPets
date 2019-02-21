@@ -29,6 +29,21 @@
 		<link rel="stylesheet" href="css/custom.css">
 	</head>
 	<body>
+		<div id="cookie-advisor">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="card cookie-card">
+    	                <div class="card-header">Política de cookies</div>
+        	            <div class="card-body">
+            		        <h5 class="card-title">Este sitio usa cookies</h5>
+                    		<p class="card-text">Para poder navegar en este sitio, debes aceptar el uso de cookies. Si lo aceptas, guardaremos una cookie que indica al web que quieres usar cookies y esta molesta ventana desaparecerá para siempre de tu vista.</p>
+                      	</div>
+                    </div>
+				</div>				
+			</div>
+		</div>
+	
 		<div class="body">
 			<header id="header">
 				<div class="container">
