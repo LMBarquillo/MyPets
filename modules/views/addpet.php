@@ -85,7 +85,10 @@
 			
 					<div id="pet-add" class="row">
 						<div class="col-md-12">
-							sin permisos
+							<div class="alert alert-danger" role="alert">
+                             	<h4 class="alert-heading">SIN PERMISOS</h4>
+                             	<p>Ay, pillín, que intentaste entrar aquí sin permisos...</p>
+                            </div>
 						</div>
 					</div>
 				</div>
