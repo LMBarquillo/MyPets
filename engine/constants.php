@@ -4,7 +4,7 @@
  * Constantes de uso general.
  */
 const RESULTS_PER_PAGE = 4;
-
+const ALLOW_COOKIES = "allowCookies";
 const ACTION_DELETE = "delete";
 
 // Tabla mascotas

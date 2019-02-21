@@ -27,17 +27,31 @@ function login() {
 }
 
 function logout() {
-	console.log("Desconectando...");
 	let data = {
 		"action" : "logout"
 	};
-	// Y disparamos nuesta la petición Ajax
 	$.ajax({
 		data: data,
 		url: 'engine/requests.php',
 		type: 'post',
 		success: function(response) {
-			console.log(response);
+			window.location.replace("index.php");
+		},
+		error: function(data) {
+			console.log(data.responseText);
+		}
+	});
+}
+
+function acceptCookies() {
+	let data = {
+		"action" : "acceptCookies"
+	};
+	$.ajax({
+		data: data,
+		url: 'engine/requests.php',
+		type: 'post',
+		success: function(response) {
 			window.location.replace("index.php");
 		},
 		error: function(data) {

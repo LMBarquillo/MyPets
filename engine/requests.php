@@ -30,6 +30,9 @@ if(isset($_POST['action'])) {
         case 'logout':
             logout();
             break;
+        case 'acceptCookies':
+            acceptCookies();
+            break;
         default:
             setErrorPost(ERROR_BADACTION);
     }
@@ -99,6 +102,12 @@ function login(PetsDB $dbPets, $post) {
 function logout() {
     Session::destroy();
     setOKPost(SUCCESS_LOGOUT);
+}
+
+function acceptCookies() {
+    $cookie_name = ALLOW_COOKIES;
+    $cookie_value = "Y";
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 }
 
 function insertPet($post) {
