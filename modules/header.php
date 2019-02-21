@@ -44,7 +44,7 @@
 							<?php
 								if(isset($_SESSION['user']) && isset($_SESSION['token'])) {
 							?>
-								<button id="logout-btn" class="btn btn-danger" type="button"><i class="fa fa-close"></i>&nbsp;Desconectarse</button>
+								<button onclick="logout()" class="btn btn-danger" type="button"><i class="fa fa-close"></i>&nbsp;Desconectarse</button>
 								<span>Bienvenido, <strong><?php echo $_SESSION['user']; ?></strong></span>
 							<?php 
 								} else { 

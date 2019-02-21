@@ -36,7 +36,7 @@
 														<p id="login-msg" class="msg-error"></p>
 													</div>
 													<div class="col-md-6">
-														<input id="login-btn" type="button" value="Entrar" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+														<input onclick="login()" type="button" value="Entrar" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
 													</div>
 												</div>
 											</form>
