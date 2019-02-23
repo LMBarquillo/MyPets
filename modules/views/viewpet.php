@@ -2,7 +2,7 @@
 				<div class="container">
 					<hr class="tall">
 <?php 
-    include("engine/dbPets.php");
+    include("engine/dbPets.php");    
 
 	if(isset($_GET['id'])) {
 	    $viewPet = true;
@@ -49,6 +49,10 @@
 							</div>
 						</div>
 					</div>
+					
+					<?php 
+					   if(isset($_SESSION[ROLE]) && $_SESSION[ROLE] == ADMIN_ROLE) { 
+					?>
 					
 					<div id="pet-edit" class="row"  <?php if(isset($_GET['edit']) && $_GET['edit'] == 'true') echo 'style="display: block;"'?>>
 						<div class="col-md-12">
@@ -111,7 +115,8 @@
 						</div>
 					</div>
 <?php
-		} else {
+					   } 
+        } else {
 ?>
 					<div class="row">
 						<div class="col-md-12">
