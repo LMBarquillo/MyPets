@@ -83,16 +83,10 @@ function login(PetsDB $dbPets, $post) {
     if(isset($post[USER]) && isset($post[PASS])) {
         $user = $dbPets->login($post[USER], $post[PASS]);
         
-        if(!empty($user->getUser())) {
-            // Iniciamos sesión
-            session_start();
-            $_SESSION[USER] = $user->getUser();
-            $_SESSION[TOKEN] = $user->getPass();
-            $_SESSION[ROLE] = $user->getRole();
-            
+        if(session::initSession($user)) {
             setOKPost(SUCCESS_LOGIN);
         } else {
-            setUnauthorized(ERROR_LOGIN);   
+            setUnauthorized(ERROR_LOGIN);
         }        
     } else {
         setErrorPost(ERROR_BADLOGIN);

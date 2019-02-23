@@ -16,8 +16,30 @@ class Session {
 	function getId() {
 		return session_id();
 	}
+	
+	/**
+	 * Inicia una sesión para un usuario especificado
+	 * @param User $user -> Usuario de la sesión
+	 * @return boolean -> true si la inició o false si no llegaron datos del usuario
+	 */
+	public static function initSession(User $user) {
+	    if(!empty($user->getUser())) {
+	        // Iniciamos sesión
+	        session_start();
+	        $_SESSION[USER] = $user->getUser();
+	        $_SESSION[TOKEN] = $user->getPass();
+	        $_SESSION[ROLE] = $user->getRole();
+	        
+	        return true;
+	    } else {
+	        return false;
+	    }	    
+	}
 
-	static function destroy() {
+	/**
+	 * Destruye la sesión
+	 */
+	public static function destroy() {
 	    session_start();
 		// Destruir todas las variables de sesión.
 		$_SESSION = array();
